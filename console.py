@@ -114,13 +114,13 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id"""
+        """ Creates a new instance of a class, saves it, and prints the id."""
         if not args:
             print("** class name missing **")
             return
         lines = args.split()
         ClassName = lines[0]
-        
+
         if ClassName not in self.classes:
             print("** class doesn't exist **")
             return
@@ -304,6 +304,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
