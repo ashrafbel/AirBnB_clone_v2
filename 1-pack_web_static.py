@@ -6,12 +6,17 @@ from fabric.api import *
 
 
 def do_pack():
-    local('sudo mkdir -p versions')
-    d_t = datetime.now()
-    d = d_t.strftime("%Y%m%d%H%M%S")
-    archivename = "versions/web_static_{}.tgz".format(d)
-    creating = local("tar -cvzf {} web_static".format(archivename))
-    if creating is not None:
-        return archivename
-    else:
+    try:
+        # Create versions directory if it doesn't exist
+        local('mkdir -p versions')
+        d_t = datetime.now()
+        d = d_t.strftime("%Y%m%d%H%M%S")
+        archivename = "versions/web_static_{}.tgz".format(d)
+        creating = local("tar -cvzf {} web_static".format(archivename))
+
+        if creating.succeeded:
+            return archivename
+        else:
+            return None
+    except Exception:
         return None
