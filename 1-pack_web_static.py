@@ -3,20 +3,16 @@
 of the web_static folder in the AirBnB Clone repository."""
 from datetime import datetime
 from fabric.api import *
-
+import os
 
 def do_pack():
-    try:
-        # Create versions directory if it doesn't exist
-        local('mkdir -p versions')
-        d_t = datetime.now()
-        d = d_t.strftime("%Y%m%d%H%M%S")
-        archivename = "versions/web_static_{}.tgz".format(d)
-        creating = local("tar -cvzf {} web_static".format(archivename))
-
-        if creating.succeeded:
-            return archivename
-        else:
-            return None
-    except Exception:
+    "tgz archive genereted"
+    local('sudo mkdir -p versions')
+    d_t = datetime.now()
+    d = d_t.strftime("%Y%m%d%H%M%S")
+    archivename = "versions/web_static_{}.tgz".format(d)
+    creating = local("tar -cvzf {} web_static".format(archivename))
+    if creating is not None:
+        return archivename
+    else:
         return None
