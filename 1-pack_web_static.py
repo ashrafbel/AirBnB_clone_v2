@@ -3,7 +3,7 @@
 of the web_static folder in the AirBnB Clone repository."""
 from datetime import datetime
 from fabric.api import *
-import os
+
 
 def do_pack():
     "tgz archive genereted"
