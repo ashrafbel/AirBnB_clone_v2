@@ -65,3 +65,8 @@ class FileStorage:
                 if type(VAL) is cls:
                     D[KEY_] = VAL
             return D
+
+    def close(self):
+        "call reliad"
+        self.reload()
+

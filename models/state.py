@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This is the state class"""
 import models
+import shlex
 from os import getenv
 from models.base_model import Base
 from models.base_model import BaseModel
