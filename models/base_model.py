@@ -9,9 +9,9 @@ import uuid
 
 Base = declarative_base()
 
+
 class BaseModel:
     """A base class for all hbnb models"""
-    
     id = Column(String(60), primary_key=True, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, nullable=False)
@@ -47,9 +47,9 @@ class BaseModel:
         dict_copy['updated_at'] = self.updated_at.isoformat()
         dict_copy.pop('_sa_instance_state', None)
         return dict_copy
-    
+
     def __str__(self):
-        """Returns a string representation of the instance"""
+        """string representation"""
         cls = (str(type(self)).split('.')[-1]).split('\'')[0]
         return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
 
